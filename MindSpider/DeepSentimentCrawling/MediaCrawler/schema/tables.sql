@@ -582,6 +582,29 @@ CREATE TABLE `zhihu_creator` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='知乎创作者';
 
 
+-- ----------------------------
+-- Table structure for yahoo_finance_news
+-- ----------------------------
+DROP TABLE IF EXISTS `yahoo_finance_news`;
+CREATE TABLE `yahoo_finance_news`
+(
+    `id`             int          NOT NULL AUTO_INCREMENT COMMENT '自增ID',
+    `note_id`        varchar(255) NOT NULL COMMENT '新闻ID',
+    `title`          text         DEFAULT NULL COMMENT '新闻标题',
+    `desc`           longtext     DEFAULT NULL COMMENT '新闻描述',
+    `source`         varchar(255) DEFAULT NULL COMMENT '新闻来源',
+    `note_url`       text         DEFAULT NULL COMMENT '新闻URL',
+    `publish_time`   bigint       DEFAULT NULL COMMENT '发布时间戳',
+    `keyword`        varchar(255) DEFAULT NULL COMMENT '搜索关键词',
+    `platform`       varchar(64)  DEFAULT 'yahoo_finance' COMMENT '平台名称',
+    `add_ts`         bigint       NOT NULL COMMENT '记录添加时间戳',
+    `last_modify_ts` bigint       NOT NULL COMMENT '记录最后修改时间戳',
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `idx_yahoo_finance_news_note_id` (`note_id`),
+    KEY              `idx_yahoo_finance_news_publish_time` (`publish_time`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Yahoo Finance 新闻';
+
+
 -- add column `like_count` to douyin_aweme_comment
 alter table douyin_aweme_comment add column `like_count` varchar(255) NOT NULL DEFAULT '0' COMMENT '点赞数';
 

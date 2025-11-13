@@ -432,3 +432,17 @@ class ZhihuCreator(Base):
     get_voteup_count = Column(Integer, default=0)
     add_ts = Column(BigInteger)
     last_modify_ts = Column(BigInteger)
+
+class YahooFinanceNews(Base):
+    __tablename__ = 'yahoo_finance_news'
+    id = Column(Integer, primary_key=True)
+    note_id = Column(String(255), index=True, unique=True)
+    title = Column(Text)
+    desc = Column(Text)
+    source = Column(Text)
+    note_url = Column(Text)
+    publish_time = Column(BigInteger, index=True)
+    keyword = Column(Text)
+    platform = Column(String(64), default='yahoo_finance')
+    add_ts = Column(BigInteger)
+    last_modify_ts = Column(BigInteger)
